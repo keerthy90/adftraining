@@ -127,6 +127,9 @@
 				"type": "String"
 			}
 		},
+		"folder": {
+			"name": "Training"
+		},
 		"annotations": [],
 		"lastPublishTime": "2023-02-10T04:39:17Z"
 	},
