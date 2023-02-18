@@ -1,0 +1,50 @@
+{
+	"name": "pl_basics_activities_2",
+	"properties": {
+		"activities": [
+			{
+				"name": "Execute Pipeline1",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_Basics_Activites_1",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"PersonName": "Keerthy",
+						"CatogeryName": "student"
+					}
+				}
+			},
+			{
+				"name": "GroceryActivity",
+				"description": "",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Execute Pipeline1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "Grocery",
+					"value": "'Milk'"
+				}
+			}
+		],
+		"variables": {
+			"Grocery": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-02-07T16:47:49Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

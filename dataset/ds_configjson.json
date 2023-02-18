@@ -1,0 +1,35 @@
+{
+	"name": "ds_configjson",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_datalake",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"targetobject": {
+				"type": "string"
+			},
+			"targetpath": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().targetobject",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().targetpath",
+					"type": "Expression"
+				},
+				"fileSystem": "newcontainer"
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

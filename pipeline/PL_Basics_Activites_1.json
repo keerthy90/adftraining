@@ -1,0 +1,105 @@
+{
+	"name": "PL_Basics_Activites_1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Set Variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "ProjectName",
+					"value": "\"TestProject\""
+				}
+			},
+			{
+				"name": "Append variable1",
+				"type": "AppendVariable",
+				"dependsOn": [
+					{
+						"activity": "Set Variable1",
+						"dependencyConditions": [
+							"Skipped"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "Errorsdata",
+					"value": {
+						"value": "@concat('abc','pqr')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "HelloWorldActivity",
+				"description": "",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "Greeting",
+					"value": {
+						"value": "@{pipeline().parameters.PersonName}",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "ProfessionName",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "ProfessionCatogery",
+					"value": {
+						"value": "@pipeline().parameters.CatogeryName",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Wait1",
+				"type": "Wait",
+				"dependsOn": [
+					{
+						"activity": "ProfessionName",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"waitTimeInSeconds": 30
+				}
+			}
+		],
+		"parameters": {
+			"PersonName": {
+				"type": "string"
+			},
+			"CatogeryName": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"ProjectName": {
+				"type": "String"
+			},
+			"Errorsdata": {
+				"type": "Array"
+			},
+			"Greeting": {
+				"type": "String"
+			},
+			"ProfessionCatogery": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-02-07T16:43:31Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

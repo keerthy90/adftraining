@@ -1,0 +1,9 @@
+{
+	"name": "TrainAzureDataFactory",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "6ecab89f-ff89-4e43-a2ff-0d503cd8c88b",
+		"tenantId": "c3e4dde2-696b-41c1-8ae0-a112c2b2f1f5"
+	}
+}

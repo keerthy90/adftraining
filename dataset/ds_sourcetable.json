@@ -1,0 +1,31 @@
+{
+	"name": "ds_sourcetable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_sqldb",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"sourceschema": {
+				"type": "string"
+			},
+			"sourceobject": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().sourceschema",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().sourceobject",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
