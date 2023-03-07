@@ -16,11 +16,27 @@
 				}
 			},
 			{
-				"name": "Execute Pipeline1",
+				"name": "Call_Validation_Pipeline",
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
 						"activity": "Call_ingestion",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Call_Transformation_Pipeline",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Call_Validation_Pipeline",
 						"dependencyConditions": [
 							"Succeeded"
 						]
